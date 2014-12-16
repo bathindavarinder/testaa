@@ -41,6 +41,16 @@
 
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
+
+        if (navigator.notification) {
+            navigator.notification.alert("Cordovba", null, "working", 'OK');
+        } else {
+            alert("not working");
+        }
+        if (!navigator.camera) {
+            alert("Camera API not supported");
+
+        }
         app.initialize();
         </script>
 </body>
