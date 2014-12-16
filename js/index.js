@@ -37,12 +37,17 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 
-        if (navigator.notification) {
-            navigator.notification.progressStart("Cordovba", "working");
-            navigator.notification.progressValue(50);
-        } else {
-            alert("not working");
+        if(StatusBar)
+        {
+            alert("status bar");
+            StatusBar.show();
         }
+        //if (navigator.notification) {
+        //    navigator.notification.progressStart("Cordovba", "working");
+        //    navigator.notification.progressValue(50);
+        //} else {
+        //    alert("not working");
+        //}
 
 
         if (navigator.camera) {
