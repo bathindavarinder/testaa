@@ -19,13 +19,36 @@
 var app = {
     // Application Constructor
     initialize: function () {
-        if (window.cordova) {
-            alert("yes,cordova working");
+
+        if (navigator.notification) {
+            navigator.notification.alert("Cordovba", null, "working", 'OK');
+        } else {
+            alert("not working");
         }
 
-        if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
-            alert("yes,navigator worked working");
+
+        if (!navigator.camera) {
+            alert("Camera API not supported");
+           
         }
+        var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: 1,      // 0:Photo Library, 1=Camera, 2=Saved Photo Album
+            encodingType: 0     // 0=JPG 1=PNG
+        };
+
+        navigator.camera.getPicture(
+            function (imageData) {
+                if (imageData != undefined) {
+                    navigator.notification.alert("image", null, "working", 'OK');
+                }
+            },
+            function () {
+                app.showAlert('Error taking picture', 'Error');
+            },
+            options);
+
         this.bindEvents();
     },
     // Bind Event Listeners
