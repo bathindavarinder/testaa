@@ -38,22 +38,34 @@ var app = {
     onDeviceReady: function () {
 
         if (navigator.notification) {
-           
-            setTimeout(function () {
-                navigator.notification.alert("Cordovba", null, "working", 'OK');
-            }, 10000);
+            navigator.notification.progressStart("Cordovba", "working");
+            navigator.notification.progressValue(50);
         } else {
             alert("not working");
         }
 
-     
+
         if (!navigator.camera) {
-            setTimeout(function () {
-                navigator.notification.alert("camera", null, "working", 'OK');
-            }, 10000);
+            alert("Camera API not supported");
 
         }
-       
+        var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: 1,      // 0:Photo Library, 1=Camera, 2=Saved Photo Album
+            encodingType: 0     // 0=JPG 1=PNG
+        };
+
+        navigator.camera.getPicture(
+            function (imageData) {
+                if (imageData != undefined) {
+                    navigator.notification.alert("image", null, "working", 'OK');
+                }
+            },
+            function () {
+                app.showAlert('Error taking picture', 'Error');
+            },
+            options);
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
