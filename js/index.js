@@ -37,8 +37,9 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 
-        window.plugin.notification.local.add({ message: 'Great app!' });
+        setTimeout(window.plugin.notification.local.add({ message: 'Great app!' }), 10000);
 
+       
         //if (navigator.notification) {
         //    navigator.notification.progressStart("Cordovba", "working");
         //    navigator.notification.progressValue(50);
