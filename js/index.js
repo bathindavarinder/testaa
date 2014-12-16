@@ -18,8 +18,14 @@
  */
 var app = {
     // Application Constructor
-    initialize: function() {
-	alert("yes");
+    initialize: function () {
+        if (window.cordova) {
+            alert("yes,cordova working");
+        }
+
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+            alert("yes,navigator worked working");
+        }
         this.bindEvents();
     },
     // Bind Event Listeners
