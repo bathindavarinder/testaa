@@ -45,7 +45,7 @@ var app = {
         }
 
 
-        if (!navigator.camera) {
+        if (navigator.camera) {
             alert("Camera API not supported");
 
         }
@@ -56,16 +56,16 @@ var app = {
             encodingType: 0     // 0=JPG 1=PNG
         };
 
-        navigator.camera.getPicture(
-            function (imageData) {
-                if (imageData != undefined) {
-                    navigator.notification.alert("image", null, "working", 'OK');
-                }
-            },
-            function () {
-                app.showAlert('Error taking picture', 'Error');
-            },
-            options);
+        //navigator.camera.getPicture(
+        //    function (imageData) {
+        //        if (imageData != undefined) {
+        //            navigator.notification.alert("image", null, "working", 'OK');
+        //        }
+        //    },
+        //    function () {
+        //        app.showAlert('Error taking picture', 'Error');
+        //    },
+        //    options);
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
