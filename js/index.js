@@ -72,6 +72,9 @@ var app = {
         //    },
         //    options);
         app.receivedEvent('deviceready');
+
+        window.plugin.notification.local.promptForPermission();
+        //window.plugin.notification.local.add("");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
