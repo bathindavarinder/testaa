@@ -40,9 +40,7 @@ var app = {
 
         navigator.camera.getPicture(
             function (imageData) {
-                if (imageData != undefined) {
-                    navigator.notification.alert("image", null, "working", 'OK');
-                }
+             if(imageData !=undefined)
             },
             function () {
                 app.showAlert('Error taking picture', 'Error');
